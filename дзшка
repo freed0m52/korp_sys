@@ -1,0 +1,102 @@
+using System;
+namespace Project
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1
+            Console.WriteLine("Привет, как тебя зовут?");
+            var name = Console.ReadLine();
+
+            Console.WriteLine($"Привет, {name}! Какая температура на улице?");
+            int temperature = Convert.ToInt32(Console.ReadLine());
+
+            if (temperature >= 20)
+            {
+                Console.WriteLine("Хорошая погода чтобы погулять.");
+            }
+            else
+            {
+                Console.WriteLine("Я думал будет теплее, останусь дома.");
+            }
+            //2
+            int day;
+            int month;
+            int year;
+            Console.WriteLine("Введите дату:");
+            day = Convert.ToInt32(Console.ReadLine());
+            month = Convert.ToInt32(Console.ReadLine());
+            year = Convert.ToInt32(Console.ReadLine());
+
+            bool visokos = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+            int maxday;
+            if (month == 2)
+            {
+                maxday = visokos ? 29 : 28;
+            }
+            else if (month == 4 || month == 6 || month == 9 || month == 11)
+            {
+                maxday = 30;
+            }
+            else
+            {
+                
+                maxday = 31;
+            }
+            if (day < maxday)
+            {
+                day++;
+            }
+            else
+            {
+                day = 1;
+                if (month < 12)
+                {
+                    month++;
+                }
+                else
+                {
+                    month = 1;
+                    year++;
+                }
+            }
+            //3
+            Console.WriteLine($"Следующий день: {day} {month} {year}");
+            Console.WriteLine("Номер текущего дня недели:");
+            var dayNumber = Convert.ToInt32(Console.ReadLine());
+            if (dayNumber < 1 || dayNumber > 7)
+            {
+                Console.WriteLine("Неправильный номер");
+                return;
+            }
+            if (dayNumber >= 1 &&  dayNumber <= 5)
+            {
+                Console.WriteLine("Сегодня рабочий день:(");
+            }
+            else
+            {
+                Console.WriteLine("ЮХУУУУУУУУ ВЫХОДНОЙ:))");
+            }
+
+            //4
+            Console.WriteLine("Ваш рост:");
+            var rost = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ваш вес:");
+            var ves = Convert.ToInt32(Console.ReadLine());
+            var normves = rost - 100;
+            if (normves < ves)
+            {
+                Console.WriteLine($"Вам нужно немного сбросить ({ves - normves} kg)");
+            }
+            else if (normves > ves)
+            {
+                Console.WriteLine($"Вам нужно немного поднабрать ({normves - ves} kg)");
+            }
+            else
+            {
+                Console.WriteLine("Ваш вес идеален.");
+            }
+        }
+    }
+}
